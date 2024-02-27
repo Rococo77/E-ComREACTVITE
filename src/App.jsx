@@ -12,17 +12,21 @@ function CategorySelection() {
     let row = [];
     const uniqueCategories = new Set();
 
+    const [categorySelected, setCategorySelected] = useState("");
+
     for (let i = 0; i < NumberProducts; i++) {
         if (lastCateg !== products[i].category && !uniqueCategories.has(products[i].category)) {
             lastCateg = products[i].category;
             row.push(
-                <div className="category" key={`categorie : ${products[i].category}`}>
+                <div className="category" key={`categorie : ${products[i].category}`} onClick={() => setCategorySelected(products[i].category)}>
+                    {" "}
                     {products[i].category}
                 </div>
             );
             uniqueCategories.add(products[i].category);
         }
     }
+    console.log(categorySelected); // lors du clic categorySELECTED prend le nom de la categorie !
 
     return <header className="categoryContainer">{row}</header>;
 }
@@ -74,6 +78,7 @@ function App() {
         let contentPage = [];
         for (let produit = x; produit < Math.min(x + nbrProductPage, NumberProducts); produit++) {
             if (awa) {
+                /// test pour les catégories
                 contentPage.push(
                     <article
                         className="Article"
