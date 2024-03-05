@@ -9,6 +9,7 @@ import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 
 const App = () => {
   return (
+    
     <CartProvider>
       <Router>
         <Navbar />

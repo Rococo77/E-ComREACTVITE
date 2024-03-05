@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../../api/api';
+import Button from '../../components/common/Button/Button';
 
 const ProductPage = () => {
   const { id } = useParams();

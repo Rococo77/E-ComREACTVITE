@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 import CartContext from '../../../contexts/CartContext';
-import Input from '../../../components/common/Input/Input';
 
 import logo from '../../../assets/logo-removebg-preview.png';
+import SearchBar from '../../../components/common/Input/searchbar';
 
 const Navbar = () => {
   const { cart } = React.useContext(CartContext);
@@ -20,11 +20,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="flex items-center">
-          <Input
-            type="search"
-            placeholder="Rechercher..."
-            className="bg-gray-200 text-gray-800 px-2 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600 mr-4"
-          />
+          <SearchBar/>
           <Link to="/cart" className="relative">
             <FaShoppingCart className="h-6 w-6" />
             <span className="absolute top-0 right-0 bg-red-500 text-white px-2 py-1 rounded-full text-xs">{cartItemsCount}</span>

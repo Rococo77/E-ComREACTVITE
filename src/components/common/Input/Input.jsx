@@ -1,4 +1,3 @@
-// components/common/Input/Input.jsx
 import React from 'react';
 
 const Input = ({ type, value, onChange, className, ...props }) => {
@@ -8,3 +7,4 @@ const Input = ({ type, value, onChange, className, ...props }) => {
 };
 
 export default Input;
+
