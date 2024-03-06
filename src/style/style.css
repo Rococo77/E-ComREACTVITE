@@ -5,10 +5,11 @@
 }
 .mainPage{
     height: auto;
-    width: 100vw;
+    width: 95%;
         display: flex;
     flex-direction: column;
     position: relative;
+    box-shadow: 0 0 0 1px violet;
 }
 
 .categoryContainer{
@@ -40,6 +41,12 @@
     display: flex;
     flex-direction: column;
 }
+
+.container2{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
 .articleContainer{
     height: 80%;
     display: flex;
@@ -56,10 +63,13 @@
     align-items: center;
 }
 .Article img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100px;
     width: 200px; /* Ajoutez ceci si vous voulez aussi définir la largeur */
     object-fit: contain; /* Cela permet de maintenir les proportions de l'image */
-    box-shadow: 0 0 0 1px;
+    box-shadow: 0 0 0 1px red;
 }
 .Article .title {
     height: 30%;
