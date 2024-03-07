@@ -4,7 +4,21 @@ import ProductDetail from "./components/ProductDetail";
 import { useState } from "react";
 import ProductDisplay from "./components/ProductDisplay";
 import SearchBar from "./components/searchBar";
+import Checkout from "./components/checkout";
+
+import { ProductContext } from "./context/productContext";
 function App() {
+    const [clickCounts, setClickCounts] = useState([]);
+    const [selectedProduct, setSelectedProduct] = useState(null); // Nouvel état pour l'ID du produit sélectionné
+
+    const handleContextClick = (product) => {
+        setClickCounts((prevCounts) => {
+            const newCounts = [...prevCounts, product];
+            console.log("Nouveau tableau de clickCounts:", newCounts); // Log de débogage
+            return newCounts;
+        });
+    };
+
     const [productsCategories, setProductsCategories] = ApiProducts();
 
     const [categorySelected, setCategorySelected] = useState("general");
@@ -24,18 +38,24 @@ function App() {
     ));
 
     return (
-        <Router>
-            <main className="mainPage">
-                <header className="categoryContainer">
-                    {row}
-                    <SearchBar />
-                </header>
-                <Routes>
-                    <Route path="/" element={ProductDisplay(categorySelected, numPage, setNumPage)} />
-                    <Route path="/product/:id" element={<ProductDetail />} />
-                </Routes>
-            </main>
-        </Router>
+        <ProductContext.Provider value={{ clickCounts, handleContextClick }}>
+            <Router>
+                <main className="mainPage">
+                    <header className="categoryContainer">
+                        <div style={{ width: "60%" }}>{row}</div>
+                        <SearchBar />
+                        <Link to={"/checkout"} style={{ width: "20%", boxShadow: "0 0 0 1px", textAlign: "center" }}>
+                            Panier
+                        </Link>
+                    </header>
+                    <Routes>
+                        <Route path="/" element={ProductDisplay(categorySelected, numPage, setNumPage)} />
+                        <Route path="/product/:id" element={<ProductDetail />} />
+                        <Route path="/checkout" element={<Checkout />} />
+                    </Routes>
+                </main>
+            </Router>
+        </ProductContext.Provider>
     );
 }
 
