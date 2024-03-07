@@ -4,6 +4,8 @@ import Input from '../../common/Input/Input';
 import Button from '../../common/Button/Button';
 
 
+
+
 const CheckoutForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -44,14 +46,14 @@ const CheckoutForm = () => {
   
 
   return (
-    <form onSubmit={handleSubmit} className="px-4 py-2">
-      <Input type="text" name="name" value={formData.name} onChange={handleInputChange} className="mb-2" placeholder="Name" />
-      <Input type="email" name="email" value={formData.email} onChange={handleInputChange} className="mb-2" placeholder="Email" />
-      <Input type="text" name="address" value={formData.address} onChange={handleInputChange} className="mb-2" placeholder="Address" />
-      <Input type="text" name="cardNumber" value={formData.cardNumber} onChange={handleInputChange} className="mb-2" placeholder="Card Number" />
-      <Input type="text" name="expirationDate" value={formData.expirationDate} onChange={handleInputChange} className="mb-2" placeholder="Expiration Date (MM/YY)" />
-      <Input type="text" name="securityCode" value={formData.securityCode} onChange={handleInputChange} className="mb-2" placeholder="Security Code (CVV)" />
-      <Button type="submit">Place Order</Button>
+    <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <Input type="text" name="name" value={formData.name} onChange={handleInputChange} className="mb-4 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Name" />
+      <Input type="email" name="email" value={formData.email} onChange={handleInputChange} className="mb-4 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Email" />
+      <Input type="text" name="address" value={formData.address} onChange={handleInputChange} className="mb-4 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Address" />
+      <Input type="text" name="cardNumber" value={formData.cardNumber} onChange={handleInputChange} className="mb-4 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Card Number" />
+      <Input type="text" name="expirationDate" value={formData.expirationDate} onChange={handleInputChange} className="mb-4 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Expiration Date (MM/YY)" />
+      <Input type="text" name="securityCode" value={formData.securityCode} onChange={handleInputChange} className="mb-4 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Security Code (CVV)" />
+      <Button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Place Order</Button>
     </form>
   );
 };

@@ -25,6 +25,9 @@ const CartProvider = ({ children }) => {
   const decreaseQuantity = (product) => {
     dispatch({ type: "DECREASE_QUANTITY", product });
   };
+  const clearCart = () => {
+    dispatch({ type: "CLEAR_CART" });
+  };
 
   return (
     <CartContext.Provider
@@ -34,6 +37,7 @@ const CartProvider = ({ children }) => {
         removeFromCart,
         increaseQuantity,
         decreaseQuantity,
+        clearCart,
       }}
     >
       {children}

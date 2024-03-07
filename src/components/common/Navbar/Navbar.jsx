@@ -11,23 +11,25 @@ const Navbar = () => {
   const cartItemsCount = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <nav className="bg-gray-800 text-white px-4 py-2">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center">
-          <Link to="/" className="text-2xl font-bold">
-            <img src={logo} alt="Logo" className="h-10 w-10 mr-2" />
-            My Store
-          </Link>
-        </div>
-        <div className="flex items-center">
-          <SearchBar/>
-          <Link to="/cart" className="relative">
-            <FaShoppingCart className="h-6 w-6" />
-            <span className="absolute top-0 right-0 bg-red-500 text-white px-2 py-1 rounded-full text-xs">{cartItemsCount}</span>
-          </Link>
-        </div>
-      </div>
-    </nav>
+    <nav className="bg-gray-800 p-2 md:p-4">
+  <div className="container mx-auto flex justify-between items-center">
+    <div className="flex items-center">
+      <Link to="/" className="text-white text-lg font-bold mr-4">
+        <img src={logo} alt="Logo" className="h-8" />
+      </Link>
+      <Link to="/cart" className="text-white text-lg font-bold">
+        <FaShoppingCart className="inline-block mr-2" />
+        <span className="bg-red-600 text-white p-1 rounded-full text-xs">{cartItemsCount}</span>
+      </Link>
+    </div>
+    <div className="flex items-center justify-end">
+      <SearchBar className="mr-4" />
+      
+    </div>
+  </div>
+</nav>
+
+
   );
 };
 

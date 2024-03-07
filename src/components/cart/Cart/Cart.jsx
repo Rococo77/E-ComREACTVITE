@@ -8,22 +8,22 @@ const Cart = () => {
   const { cart, totalPrice } = React.useContext(CartContext);
 
   return (
-    <div className="px-4 py-2">
-      <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
-      {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        <>
-          {cart.map((product) => (
-            <CartItem key={product.id} product={product} />
-          ))}
-          <div className="flex justify-between items-center border-t py-4">
-            <span className="text-lg font-bold">Total:</span>
-            <span className="text-lg font-bold">${totalPrice}</span>
-          </div>
-        </>
-      )}
-    </div>
+    <div className="px-4 py-2 bg-white shadow-lg rounded-lg">
+  {cart.length === 0 ? (
+    <p className="text-gray-600 text-lg">Your cart is empty.</p>
+  ) : (
+    <>
+      {cart.map((product) => (
+        <CartItem key={product.id} product={product} />
+      ))}
+      <div className="flex justify-between items-center border-t pt-4 mt-4">
+        <span className="text-xl font-bold text-gray-800">Total:</span>
+        <span className="text-xl font-bold text-gray-800">${totalPrice}</span>
+      </div>
+    </>
+  )}
+</div>
+
   );
 };
 
