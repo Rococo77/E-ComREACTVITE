@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Spinner from "./spinner/spinner";
@@ -50,36 +50,44 @@ function ProductDetail() {
     }
 
     return (
-        <div className="Article" style={{ padding: "30px" }}>
-            <h1>{product.title}</h1>
-            <img src={product.image} alt={product.title} />
-            <p style={{ margin: "30px" }}>{product.description}</p>
-            <div className="RateContainer">
-                <div>{product.rating.rate}</div>
-                <div>{product.rating.count}</div>
-            </div>
-            <p>{product.price}</p>
-            <div style={{ padding: "50px" }}>
-                <div style={{ width: "100%" }}>
+        <Fragment>
+            <div className="Article" style={{ padding: "30px" }}>
+                <div className="ImgContainer">
+                    <img src={product.image} alt={"Photo produit : "} />
+                </div>
+                <div className="LeftContainer">
+                    <h3 className="title">{product.title}</h3>
+                    <div className="Infos">
+                        <div className="price">{product.price}€</div>
+                        <p>•</p>
+                        <div>{product.rating.rate}&#9733;</div>
+                        <div>({product.rating.count})</div>
+                    </div>
+                    <div className="Descri">{product.description}</div>
+                </div>
+
+                <div style={{ padding: "50px", width: "20%" }}>
+                    <div style={{ width: "100%" }}>
+                        <button onClick={handleClick} style={{ width: "50%" }}>
+                            +1
+                        </button>
+                        {clickCount >= 1 && (
+                            <button onClick={handleDecrease} style={{ width: "50%" }}>
+                                -1
+                            </button>
+                        )}
+                    </div>
                     {clickCount >= 1 && (
-                        <button onClick={handleDecrease} style={{ width: "50%" }}>
-                            -1
+                        <button onClick={handleAddToCart} style={{ width: "100%" }}>
+                            Ajouter au panier
                         </button>
                     )}
-                    <button onClick={handleClick} style={{ width: "50%" }}>
-                        +1
-                    </button>
+                    <p style={{ width: "100%", textAlign: "center" }}>Nombre de produits: {clickCount}</p>
                 </div>
-                {clickCount >= 1 && (
-                    <button onClick={handleAddToCart} style={{ width: "100%" }}>
-                        Ajouter au panier
-                    </button>
-                )}
-                <p>Nombre de produits: {clickCount}</p>
             </div>
 
             <Link to="/">Retour à la page d'accueil</Link>
-        </div>
+        </Fragment>
     );
 }
 

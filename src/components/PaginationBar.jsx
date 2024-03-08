@@ -11,11 +11,15 @@ function PaginationBar({ numPage, setnumPage, nbrPage }) {
 
     return (
         <div className="PaginationBar">
-            <div onClick={() => IncrementPage(false)}>-</div>
-            <div>
+            <div onClick={() => IncrementPage(false)} className="selection" style={{ backgroundColor: "#0e0e0e" }}>
+                -
+            </div>
+            <div className="numPageContainer">
                 {numPage + 1} / {nbrPage}
             </div>
-            <div onClick={() => IncrementPage(true)}>+</div>
+            <div onClick={() => IncrementPage(true)} className="selection" style={{ backgroundColor: "#f90" }}>
+                +
+            </div>
         </div>
     );
 }

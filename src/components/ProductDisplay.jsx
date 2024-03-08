@@ -3,19 +3,26 @@ import ApiCategory from "../api/apiCategory";
 import { Link } from "react-router-dom";
 function createProductElements(products, category) {
     let produitCase = [];
-    let elementPerPage = category === "general" ? 6 : 4;
+    let elementPerPage = 4;
 
     products.forEach((produit, index) => {
         if (category === "general" || produit.category === category) {
             produitCase.push(
                 <Link to={`/product/${produit.id}`} key={produit.id} className="Article">
-                    <img src={produit.image} alt={"Photo produit : "} />
-                    <div className="title">{produit.title}</div>
-                    <div className="RateContainer">
-                        <div>{produit.rating.rate}</div>
-                        <div>{produit.rating.count}</div>
+                    <div className="LeftContainer">
+                        <h3 className="title">{produit.title}</h3>
+                        <div className="Infos">
+                            <div className="price">{produit.price}€</div>
+                            <p>•</p>
+                            <div>{produit.rating.rate}&#9733;</div>
+                            <div>({produit.rating.count})</div>
+                        </div>
+                        <div className="Descri">{produit.description.length > 150 ? produit.description.substring(0, 150) + "..." : produit.description}</div>
+                        <div className="clickReserv"> Cliquez pour acheter</div>
                     </div>
-                    <div className="price">{produit.price}</div>
+                    <div className="ImgContainer">
+                        <img src={produit.image} alt={"Photo produit : "} />
+                    </div>
                 </Link>
             );
         }
@@ -36,7 +43,9 @@ function ProductDisplay(category, numPage, setNumPage) {
 
     return (
         <section className="Container">
-            <h1> Catégorie : {category === "general" ? "général" : category} </h1>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "50px" }}>
+                <h1 className="categoryName"> Catégorie : {category === "general" ? "général" : category} </h1>
+            </div>
             {pages[numPage] && <div className="articleContainer">{pages[numPage]}</div>}
             <PaginationBar numPage={numPage} setnumPage={setNumPage} nbrPage={nbrPage} />
         </section>

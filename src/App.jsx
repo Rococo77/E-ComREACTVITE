@@ -5,24 +5,13 @@ import { useState } from "react";
 import ProductDisplay from "./components/ProductDisplay";
 import SearchBar from "./components/searchBar";
 import Checkout from "./components/checkout";
+import Login from "./components/LoginPage";
+import { useLocation } from "react-router-dom";
 
 import { ProductContext } from "./context/productContext";
-function App() {
-    const [clickCounts, setClickCounts] = useState([]);
-    const [selectedProduct, setSelectedProduct] = useState(null); // Nouvel état pour l'ID du produit sélectionné
 
-    const handleContextClick = (product) => {
-        setClickCounts((prevCounts) => {
-            const newCounts = [...prevCounts, product];
-            console.log("Nouveau tableau de clickCounts:", newCounts); // Log de débogage
-            return newCounts;
-        });
-    };
-
+function Header({ setCategorySelected, setNumPage }) {
     const [productsCategories, setProductsCategories] = ApiProducts();
-
-    const [categorySelected, setCategorySelected] = useState("general");
-    const [numPage, setNumPage] = useState(0);
 
     const row = productsCategories.map((category, index) => (
         <div
@@ -37,21 +26,52 @@ function App() {
         </div>
     ));
 
+    const location = useLocation();
+    return (
+        <header className="categoryContainer">
+            {location.pathname === "/" ? (
+                <div style={{ width: "50%" }}>{row}</div>
+            ) : (
+                <Link to={"/"} className="category" style={{ width: "60%", textAlign: "center" }}>
+                    Accueil !
+                </Link>
+            )}
+            <SearchBar />
+            <Link to={"/checkout"} style={{ width: "15%", textAlign: "center" }}>
+                Panier
+            </Link>
+            <Link to={"/login"} style={{ width: "5%", textAlign: "center" }}>
+                User
+            </Link>
+        </header>
+    );
+}
+
+function App() {
+    const [clickCounts, setClickCounts] = useState([]);
+    const [selectedProduct, setSelectedProduct] = useState(null); // Nouvel état pour l'ID du produit sélectionné
+
+    const handleContextClick = (product) => {
+        setClickCounts((prevCounts) => {
+            const newCounts = [...prevCounts, product];
+            console.log("Nouveau tableau de clickCounts:", newCounts); // Log de débogage
+            return newCounts;
+        });
+    };
+
+    const [categorySelected, setCategorySelected] = useState("general");
+    const [numPage, setNumPage] = useState(0);
+
     return (
         <ProductContext.Provider value={{ clickCounts, handleContextClick }}>
             <Router>
                 <main className="mainPage">
-                    <header className="categoryContainer">
-                        <div style={{ width: "60%" }}>{row}</div>
-                        <SearchBar />
-                        <Link to={"/checkout"} style={{ width: "20%", boxShadow: "0 0 0 1px", textAlign: "center" }}>
-                            Panier
-                        </Link>
-                    </header>
+                    <Header setCategorySelected={setCategorySelected} setNumPage={setNumPage} />
                     <Routes>
                         <Route path="/" element={ProductDisplay(categorySelected, numPage, setNumPage)} />
                         <Route path="/product/:id" element={<ProductDetail />} />
                         <Route path="/checkout" element={<Checkout />} />
+                        <Route path="/login" element={<Login />} />
                     </Routes>
                 </main>
             </Router>
