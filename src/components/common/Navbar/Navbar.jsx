@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import CartContext from '../../../contexts/CartContext';
 
 import logo from '../../../assets/logo-removebg-preview.png';
@@ -20,6 +20,9 @@ const Navbar = () => {
       <Link to="/cart" className="text-white text-lg font-bold">
         <FaShoppingCart className="inline-block mr-2" />
         <span className="bg-red-600 text-white p-1 rounded-full text-xs">{cartItemsCount}</span>
+      </Link>
+      <Link to="/login" className="text-white text-lg font-bold ml-4">
+        <FaUser />
       </Link>
     </div>
     <div className="flex items-center justify-end">

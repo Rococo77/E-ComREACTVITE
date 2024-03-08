@@ -43,3 +43,21 @@
 .read-the-docs {
   color: #888;
 }
+.my-arrondi {
+  border-radius: 40px;
+}
+
+
+.my-connexbtn {
+  color : #F0F0F0;
+  background-color: rgb(17, 161, 99); /* couleur de l'arrière-plan du bouton */
+  
+}
+.my-input {
+  height: auto; /* Permet à la hauteur de l'élément de s'ajuster en fonction du contenu */
+  min-height: 40px; /* Hauteur minimale de l'élément, ajustez selon vos besoins */
+}
+
+::placeholder {
+  font-size: 14px; /* Réduire la taille de la police */
+}
