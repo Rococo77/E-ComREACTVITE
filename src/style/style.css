@@ -1,0 +1,133 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+.mainPage {
+   height: auto;
+   width: 100vw;
+   display: flex;
+   flex-direction: column;
+   position: relative;
+   box-shadow: 0 0 0 1px violet;
+}
+
+.categoryContainer {
+   display: flex;
+   width: 100%;
+   height: 5%;
+}
+.categoryContainer .category {
+   color: black;
+   flex: 1;
+   text-align: center;
+   box-shadow: 0 0 0 1px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 10%;
+}
+.categoryContainer div {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 50%;
+   box-shadow: 0 0 0 1px;
+}
+.Container {
+   padding: 50px 50px;
+   display: flex;
+   flex-direction: column;
+}
+
+.container2 {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 20px;
+}
+.articleContainer {
+   height: 80%;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
+}
+.Article {
+   flex: 1 0 50%;
+   min-height: 175px;
+   box-shadow: 0 0 0 1px red;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+.Article img {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100px;
+   width: 200px; /* Ajoutez ceci si vous voulez aussi définir la largeur */
+   object-fit: contain; /* Cela permet de maintenir les proportions de l'image */
+   box-shadow: 0 0 0 1px red;
+}
+.Article .title {
+   height: 30%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+}
+.Article .RateContainer {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 10%;
+   width: 100%;
+}
+.Article .RateContainer div {
+   width: 10%;
+   text-align: center;
+}
+.Article .price {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 10%;
+}
+
+.PaginationBar {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   padding: 5px 50px;
+}
+.PaginationBar div {
+   text-align: center;
+   box-shadow: 0 0 0 1px;
+   height: 30px;
+   width: 30px;
+}
+@media (max-width: 700px) {
+   /* .NavSelectBarre{
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 10%;
+        width: 50px;
+        height: 100px;
+    } */
+
+   .articleContainer {
+      height: calc(90% + 400px);
+   }
+   .article {
+      flex: 1 0 50%;
+   }
+}
+@media (max-width: 400) {
+   .articleContainer {
+      height: calc(90% + 1400px);
+   }
+   .article {
+      flex: 1 0 75%;
+   }
+}
